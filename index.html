@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jerin Romijah Tuli — AI/ML &amp; NLP Research</title>
+<meta name="description" content="Research portfolio of Jerin Romijah Tuli — NLP, LLMs, and biomedical signal processing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0f14;
+    --panel: #10161d;
+    --line: #232b36;
+    --line-soft: #1a212b;
+    --text: #eceff3;
+    --muted: #8c97a6;
+    --muted-2: #5f6b7a;
+    --amber: #e3a857;
+    --amber-dim: #a8763c;
+    --teal: #4fa9a8;
+    --max: 760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Source Sans 3', -apple-system, sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber-dim);color:#0b0f14;}
+  a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--muted-2);transition:border-color .15s, color .15s;}
+  a:hover{color:var(--amber);border-color:var(--amber);}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  header.top{
+    position:sticky;top:0;z-index:10;
+    background:rgba(11,15,20,.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  header.top .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;max-width:880px;
+  }
+  .mark{
+    font-family:'Newsreader', serif;font-size:19px;font-style:italic;
+    color:var(--text);border:none;letter-spacing:.02em;
+  }
+  .mark:hover{color:var(--amber);}
+  nav.section-links{display:flex;gap:22px;font-size:14.5px;color:var(--muted);}
+  nav.section-links a{border:none;color:var(--muted);}
+  nav.section-links a:hover{color:var(--amber);}
+  @media(max-width:640px){nav.section-links{gap:14px;font-size:13.5px;}}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line-soft);}
+  section:last-of-type{border-bottom:none;}
+
+  .hero{padding-top:72px;padding-bottom:56px;}
+  .eyebrow{color:var(--muted-2);font-size:14.5px;margin:0 0 14px;}
+  h1{
+    font-family:'Newsreader', serif;font-weight:500;
+    font-size:clamp(34px,5.4vw,50px);line-height:1.12;
+    margin:0 0 8px;color:var(--text);letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic;color:var(--teal);}
+  .tagline{color:var(--muted);font-size:19px;margin:0 0 26px;max-width:52ch;}
+  .lede{color:var(--text);max-width:60ch;margin:0 0 34px;}
+  .lede a{color:var(--text);}
+
+  .readout{
+    display:flex;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin-bottom:34px;
+  }
+  .readout div{
+    flex:1;padding:16px 18px;border-right:1px solid var(--line);
+  }
+  .readout div:last-child{border-right:none;}
+  .readout .num{
+    font-family:'IBM Plex Mono', monospace;font-size:22px;color:var(--amber);
+    display:block;margin-bottom:4px;
+  }
+  .readout .label{font-size:13px;color:var(--muted);line-height:1.35;display:block;}
+  @media(max-width:640px){.readout{flex-direction:column;} .readout div{border-right:none;border-bottom:1px solid var(--line);} .readout div:last-child{border-bottom:none;}}
+
+  .links-row{display:flex;flex-wrap:wrap;gap:18px;font-size:15px;}
+  .links-row a{color:var(--muted);}
+  .links-row a:hover{color:var(--amber);}
+
+  .waveform{width:100%;height:auto;display:block;margin-top:44px;}
+  .waveform path{
+    fill:none;stroke:var(--teal);stroke-width:1.4;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    animation:draw 2.4s ease-out forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @media (prefers-reduced-motion: reduce){.waveform path{animation:none;stroke-dashoffset:0;}}
+
+  h2{
+    font-family:'Newsreader', serif;font-weight:500;font-style:italic;
+    font-size:26px;color:var(--text);margin:0 0 28px;
+  }
+  h2 .n{color:var(--muted-2);font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:15px;margin-right:10px;}
+
+  .summary p{color:var(--text);max-width:64ch;}
+  .summary p + p{margin-top:16px;}
+
+  /* Publications */
+  .pub{padding:22px 0;border-top:1px solid var(--line-soft);}
+  .pub:first-of-type{border-top:none;padding-top:0;}
+  .pub .tag{
+    display:inline-block;font-size:12.5px;color:var(--amber);
+    border:1px solid var(--amber-dim);border-radius:3px;padding:2px 8px;margin-bottom:10px;
+  }
+  .pub .cite{font-size:16px;line-height:1.55;}
+  .pub .cite .title{color:var(--text);}
+  .pub .cite .venue{color:var(--muted);}
+  .pub .note{color:var(--muted);font-size:15px;margin-top:8px;}
+
+  /* Research rows */
+  .proj{padding:26px 0;border-top:1px solid var(--line-soft);}
+  .proj:first-of-type{border-top:none;padding-top:0;}
+  .proj h3{
+    font-family:'Newsreader', serif;font-weight:500;font-size:20px;margin:0 0 8px;color:var(--text);
+  }
+  .proj .status{color:var(--muted-2);font-size:13.5px;font-family:'IBM Plex Mono',monospace;margin-bottom:10px;display:block;}
+  .proj p{color:var(--muted);margin:0 0 12px;max-width:64ch;}
+  .proj .metrics{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;color:var(--teal);}
+  .proj .metrics span{color:var(--muted-2);}
+
+  /* Applied projects - compact list */
+  .applied-list{display:grid;gap:2px;}
+  .applied{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--line-soft);}
+  .applied:first-child{border-top:none;padding-top:0;}
+  .applied .name{color:var(--text);font-weight:600;font-size:15.5px;}
+  .applied .desc{color:var(--muted);font-size:14.5px;margin-top:3px;max-width:52ch;}
+  .applied a{color:var(--muted-2);font-size:13.5px;white-space:nowrap;border:none;}
+  .applied a:hover{color:var(--amber);}
+
+  /* Experience */
+  .exp{padding:22px 0;border-top:1px solid var(--line-soft);}
+  .exp:first-of-type{border-top:none;padding-top:0;}
+  .exp .row{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:8px;}
+  .exp .role{font-weight:600;font-size:16.5px;color:var(--text);}
+  .exp .org{color:var(--muted);}
+  .exp .date{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted-2);white-space:nowrap;}
+  .exp ul{margin:0;padding-left:20px;color:var(--muted);}
+  .exp li{margin-bottom:6px;}
+
+  /* Skills */
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:22px 40px;}
+  @media(max-width:600px){.skills{grid-template-columns:1fr;}}
+  .skill-group h4{
+    font-size:13px;text-transform:none;color:var(--muted-2);margin:0 0 8px;font-weight:600;
+    letter-spacing:.01em;
+  }
+  .skill-group p{margin:0;color:var(--text);font-size:15px;line-height:1.6;}
+
+  /* Education & certs */
+  .edu-row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid var(--line-soft);flex-wrap:wrap;}
+  .edu-row:first-child{border-top:none;padding-top:0;}
+  .edu-row .school{color:var(--text);font-weight:600;}
+  .edu-row .deg{color:var(--muted);font-size:14.5px;}
+  .edu-row .yr{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted-2);white-space:nowrap;}
+
+  .certs{color:var(--muted);font-size:15px;line-height:1.9;}
+  .certs a{color:var(--muted);}
+  .certs a:hover{color:var(--amber);}
+
+  footer{padding:56px 0 72px;}
+  footer h2{margin-bottom:14px;}
+  footer p{color:var(--muted);max-width:50ch;margin:0 0 26px;}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px;font-size:16px;margin-bottom:40px;}
+  .foot-note{color:var(--muted-2);font-size:13px;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">J. R. Tuli</a>
+    <nav class="section-links">
+      <a href="#publications">Publications</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Rajshahi University of Engineering &amp; Technology, B.Sc. CSE '26</p>
+    <h1>Jerin Romijah Tuli<br><em>NLP &amp; biomedical signal research.</em></h1>
+    <p class="tagline">I work on retrieval-augmented generation, LLM evaluation, and deep learning for EEG-based sleep staging — with two published papers and a Q1-track undergraduate thesis.</p>
+    <p class="lede">Currently finishing my B.Sc. in Computer Science &amp; Engineering and looking for fully funded MS/PhD positions in AI/ML research. I like problems where a model's confidence has to be earned — answerability gating in multi-turn dialogue, calibration across languages, subject-independent generalization in physiological signals.</p>
+
+    <div class="readout">
+      <div><span class="num">2</span><span class="label">peer-reviewed papers, SemEval&#8209;2026 (ACL Anthology)</span></div>
+      <div><span class="num">78.77</span><span class="label">Macro-F1, subject-independent EEG sleep staging</span></div>
+      <div><span class="num">2</span><span class="label">papers currently under review, EMNLP 2026</span></div>
+    </div>
+
+    <div class="links-row">
+      <a href="mailto:ramijahtuli786@gmail.com">ramijahtuli786@gmail.com</a>
+      <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <svg class="waveform" viewBox="0 0 700 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,45 L40,45 L52,20 L64,70 L76,10 L88,45 L130,45 L142,30 L154,58 L166,45 L210,45 L222,15 L234,75 L246,45 L300,45 L312,25 L324,60 L336,40 L348,45 L400,45 L412,18 L424,72 L436,45 L490,45 L502,32 L514,55 L526,45 L580,45 L592,22 L604,68 L616,45 L700,45" />
+    </svg>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2><span class="n">01</span>Publications</h2>
+
+    <div class="pub">
+      <span class="tag">SemEval 2026 · ACL Anthology</span>
+      <p class="cite"><span class="title">MindFlayer at SemEval-2026 Task 8: DUALRAG — Answerability-Aware Generation for Multi-Turn RAG Conversations.</span><br>
+      <span class="venue">J. R. Tuli, M. S. A. Pritom, T. N. H. Naem. Proc. 20th International Workshop on Semantic Evaluation, pp. 2314–2321.</span></p>
+      <p class="note">Zero-shot answerability-routing system built on Llama-4-Scout-17B (Groq API); ranked 8th of 26 teams with 100% refusal accuracy on unanswerable questions, outperforming a GPT-OSS-120B baseline. <a href="https://aclanthology.org/2026.semeval-1.293/" target="_blank" rel="noopener">Read paper →</a></p>
+    </div>
+
+    <div class="pub">
+      <span class="tag">SemEval 2026 · ACL Anthology</span>
+      <p class="cite"><span class="title">MindFlayer at SemEval-2026 Task 13: LACR-ENS — Calibration-Aware Ensemble Routing for Cross-Language AI-Generated Code Detection.</span><br>
+      <span class="venue">J. R. Tuli, T. N. H. Naem, M. S. A. Pritom. Proc. 20th International Workshop on Semantic Evaluation, pp. 2322–2329.</span></p>
+      <p class="note">Calibration-aware ensemble (UniXCoder + GraphCodeBERT) for AI-generated code detection across 8 languages; cut out-of-distribution calibration error from 0.18 to 0.11 while improving macro-F1. <a href="https://aclanthology.org/2026.semeval-1.294/" target="_blank" rel="noopener">Read paper →</a></p>
+    </div>
+
+    <div class="pub">
+      <span class="tag">Under review · EMNLP 2026</span>
+      <p class="cite"><span class="title">Calibrated Answerability Gating for Multi-Turn RAG (CAG-MT).</span><br>
+      <span class="venue">J. R. Tuli, M. S. A. Pritom.</span></p>
+      <p class="note">Breaks a published 0.240 unanswerable-F1 ceiling, reaching 52.7% unanswerable recall at 88.6% answerable accuracy on MTRAG-842 / MTRAG-UN-507.</p>
+    </div>
+
+    <div class="pub">
+      <span class="tag">Under review · EMNLP 2026</span>
+      <p class="cite"><span class="title">The Social Mirage: Do Instruction-Tuned LLMs Keep Private Beliefs Under Social Pressure?</span><br>
+      <span class="venue">J. R. Tuli, M. S. A. Pritom.</span></p>
+      <p class="note">A representation-level probing study across 720 trials, 40 items, and 6 pressure conditions, finding a persistent Representation–Mind Gap and a 7.7× rise in strategic conformity from base to instruction-tuned models.</p>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <h2><span class="n">02</span>Research projects</h2>
+
+    <div class="proj">
+      <h3>Automated EEG Sleep Stage Classification</h3>
+      <span class="status">undergraduate thesis · targeting IEEE JBHI</span>
+      <p>A deterministic spectral-enhancement module feeding per-channel vision transformers with gated cross-channel fusion, for 5-stage sleep classification from EEG/EOG. Trained on the full Sleep-EDF Expanded corpus (153 cassette + 44 telemetry recordings, ~51GB) with a rebuilt, verified subject-independent split.</p>
+      <div class="metrics">
+        <span>Macro-F1</span> 78.77% &nbsp; <span>Accuracy</span> 78.91% &nbsp; <span>κ</span> 0.734 &nbsp; <span>Params</span> 46.3M
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>Bengali RAG Hallucination Evaluation Pipeline</h3>
+      <span class="status">independent research · targeting MeLLM workshop, ACL 2026</span>
+      <p>A three-condition evaluation design isolating retrieval failure from generation failure in Bengali retrieval-augmented generation, built on csebuetnlp/squad_bn with Groq-hosted LLMs. Introduces a Language Gap Score benchmarking Bengali RAG performance against an English baseline.</p>
+    </div>
+
+    <div class="proj">
+      <h3>BanglishBench</h3>
+      <span class="status">accepted, SemEval 2026</span>
+      <p>A 1,130-sample Bengali–English code-switching benchmark spanning safety classification, NLI, and QA, with a composite BBS metric combining MCC, Cohen's κ, G-Mean, FNR, and CSI.</p>
+    </div>
+  </div>
+</section>
+
+<section id="applied">
+  <div class="wrap">
+    <h2><span class="n">03</span>Applied projects</h2>
+    <div class="applied-list">
+      <div class="applied">
+        <div><div class="name">AI Doctor</div><div class="desc">Flask app for conversational health Q&amp;A — text, image/PDF upload, and speech-to-text, with authenticated conversation history.</div></div>
+        <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <div class="applied">
+        <div><div class="name">Age, Gender &amp; Emotion Detection</div><div class="desc">Real-time computer-vision pipeline (OpenCV, Caffe, Keras CNN) served through a Gradio interface with live confidence scores.</div></div>
+        <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <div class="applied">
+        <div><div class="name">Smart Content Summarizer Bot</div><div class="desc">LLM-powered summarizer for PDFs and YouTube transcripts, generating structured Markdown insights.</div></div>
+        <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+      <div class="applied">
+        <div><div class="name">Task Management with Analytics</div><div class="desc">Django app surfacing personal-productivity analytics — completion rate, visual dashboards, pending-task notifications.</div></div>
+        <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="n">04</span>Experience</h2>
+
+    <div class="exp">
+      <div class="row"><span class="role">Software Development Intern</span><span class="date">Mar 2025</span></div>
+      <div class="org" style="margin-bottom:10px;">Brain Station 23 Limited</div>
+      <ul>
+        <li>Collaborated in an agile squad on AI-driven healthcare solutions, participating in daily scrums and code reviews.</li>
+        <li>Contributed to AI/ML model integration and production-grade software development under senior engineering mentors.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="row"><span class="role">System Analyst, Group Project</span><span class="date">2025</span></div>
+      <div class="org" style="margin-bottom:10px;">Gizan Tech</div>
+      <ul>
+        <li>Analyzed organizational workflows and data-handling processes to identify inefficiencies and automation opportunities.</li>
+        <li>Designed DFDs and process models for centralized data management and digital transformation.</li>
+        <li>Translated process and data findings into technical recommendations and presented business impact to stakeholders.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="n">05</span>Skills</h2>
+    <div class="skills">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <p>Python, SQL, C, C++, Java, LaTeX</p>
+      </div>
+      <div class="skill-group">
+        <h4>AI / ML / LLMs</h4>
+        <p>RAG pipelines, LLM evaluation, prompt engineering, agentic workflows, Groq API, Llama-4, GPT-OSS, TensorFlow/Keras, Vision Transformers, OpenCV, scikit-learn</p>
+      </div>
+      <div class="skill-group">
+        <h4>Data engineering</h4>
+        <p>ETL pipelines, data collection &amp; transformation, Pandas, validation, exploratory analysis, third-party API integration</p>
+      </div>
+      <div class="skill-group">
+        <h4>SQL &amp; data management</h4>
+        <p>MySQL, querying, filtering, cleaning, preprocessing, aggregation, relational data handling</p>
+      </div>
+      <div class="skill-group">
+        <h4>Web / app development</h4>
+        <p>Flask, Django, Laravel, React fundamentals, Git/GitHub</p>
+      </div>
+      <div class="skill-group">
+        <h4>Other</h4>
+        <p>Robotics (Arduino), UML, Agile, feasibility studies, cloud fundamentals</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="n">06</span>Education</h2>
+    <div class="edu-row">
+      <div><div class="school">Rajshahi University of Engineering &amp; Technology</div><div class="deg">B.Sc. in Computer Science and Engineering · CGPA 3.78/4.00</div></div>
+      <div class="yr">2022–2026</div>
+    </div>
+    <div class="edu-row">
+      <div><div class="school">Viqarunnisa Noon School &amp; College</div><div class="deg">Higher Secondary Certificate, Science · GPA 5.00</div></div>
+      <div class="yr">2020–2021</div>
+    </div>
+    <div class="edu-row">
+      <div><div class="school">Viqarunnisa Noon School &amp; College</div><div class="deg">Secondary School Certificate, Science · GPA 5.00</div></div>
+      <div class="yr">2018–2019</div>
+    </div>
+
+    <h2 style="margin-top:44px;"><span class="n">07</span>Certifications</h2>
+    <p class="certs">
+      DataCamp — Data Analyst Associate<br>
+      DataCamp — Data Manipulation with pandas<br>
+      DataCamp — Intermediate Python<br>
+      Machine Learning with Python — Completion Certificate<br>
+      PHP (Laravel) Certificate — EDGE-DSTS-116-6631-00001<br>
+      Brain Station 23 — Internship Certificate
+    </p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>I'm looking for fully funded MS/PhD positions in NLP, LLM evaluation, and applied ML for biomedical signals, as well as data/AI engineering roles. Happy to share code, data, or the full thesis on request.</p>
+    <div class="foot-links">
+      <a href="mailto:ramijahtuli786@gmail.com">ramijahtuli786@gmail.com</a>
+      <a href="https://github.com/Jerin-Romijah-Tuli" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="foot-note">Dhaka, Bangladesh</p>
+  </div>
+</footer>
+
+</body>
+</html>
